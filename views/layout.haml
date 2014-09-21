@@ -6,6 +6,8 @@
 		%link{rel:'stylesheet',href:'/bootstrap/dist/css/bootstrap.min.css'}
 		%script{type:'text/javascript',src:'/jquery/dist/jquery.min.js'}
 		%script{type:'text/javascript',src:'/bootstrap/js/dropdown.js'}
+		- if params[:mode] == 'sortanime'
+			%script{type:'text/javascript',src:'/sortanime.js'}
 		:css
 			rt { display: none }
 			.jumbotron { background-color: white }
@@ -34,6 +36,8 @@
 					(台詞)
 				- elsif @params[:mode] == 'sort'
 					(ソート)
+				- elsif @params[:mode] == 'sortanime'
+					(ソートアニメ)
 		- elsif params[:query]
 			%title= "#{params[:query]} の検索結果 - cirrocumulus"
 		- else

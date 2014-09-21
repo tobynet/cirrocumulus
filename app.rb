@@ -70,6 +70,20 @@ get '/cards/:cards/files/:files' do
 	if params[:mode] == 'sort'
 		body = @doc.xpath('//body').first
 		body.content = Algorithms::Sort.mergesort(str_to_arr(body.text)).join
+	elsif params[:mode] == 'sortanime'
+		body = @doc.xpath('//body').first
+		#body.content = body.text
+
+		# Counterplan for erasing <body>
+		#
+		# e.g.
+		# 	Before: 
+		# 		<div class='container'>....<body> ...
+		# 	After
+		# 		<div class='container'>....<div id="content"> ...
+		body.name = 'div'
+		body['id'] = 'content'
+
 	elsif params[:mode] == 'line'
 		body = @doc.xpath('//body').first
 		lines = body.text.scan(/「(.+?)」/)
