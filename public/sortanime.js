@@ -42,7 +42,7 @@ jQuery(function($){
         $(char).insertBefore($target);
       };
 
-      setTimeout(animation, i * 50);
+      setTimeout(animation, i * 10);
   });
 
 });
