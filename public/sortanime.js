@@ -32,7 +32,7 @@ jQuery(function($){
   
   // Sort chars in ascending order (昇順)
   var sorted_chars = chars.sort(
-    function(a,b){ return a.textContent < b.textContent ? -1: 1; });
+    function(a,b){ return a.textContent.localeCompare(b.textContent); });
 
   // Animate chars
   sorted_chars.forEach(function(char, i){
